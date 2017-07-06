@@ -3,6 +3,7 @@ package com.java_8_training.problems.collectors;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -22,6 +23,8 @@ public class OccurrencesTest {
         //TODO #C9
         Map<String, Long> occ = new HashMap<>();
 
+        occ = Arrays.stream(word.split("")).collect(groupingBy(identity(), counting()));
+
         assertEquals(2, (long) occ.get("o"));
         assertEquals(1, (long) occ.get("c"));
         assertEquals(1, (long) occ.get("l"));
@@ -35,7 +38,8 @@ public class OccurrencesTest {
 
         //TODO #C9
         Map<String, Long> occ = new HashMap<>();
-
+        occ = sentences.stream().map((String s) -> s.split("")).flatMap(Arrays::stream).collect(groupingBy(identity(), counting()));
+        System.out.println(occ);
 
         assertEquals(2, (long) occ.get("l"));
         assertEquals(4, (long) occ.get(" "));

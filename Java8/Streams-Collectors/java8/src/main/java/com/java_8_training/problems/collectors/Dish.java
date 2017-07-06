@@ -31,6 +31,16 @@ public class Dish {
         return calories;
     }
 
+    public CaloricLevel getTypeByCalories() {
+        if (this.calories <= 400 && this.calories > 0)
+            return CaloricLevel.DIET;
+        if (this.calories <= 700 && this.calories > 400)
+            return CaloricLevel.NORMAL;
+        if (this.calories > 700)
+            return CaloricLevel.FAT;
+        return null;
+    }
+
     public Type getType() {
         return type;
     }
