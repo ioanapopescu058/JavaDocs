@@ -25,8 +25,11 @@ public class BehaviourParameterisation {
         List<Apple> inventory = Arrays.asList(new Apple(80, "green"), new Apple(155, "green"), new Apple(120, "red"));
 
 
-        //prettyPrintHeavyLightApple(inventory);
+        System.out.println("Bad Way");
+        prettyPrintHeavyLightApple(inventory);
         prettyPrintOnlyWeightApple(inventory);
+
+        System.out.println("Good Way");
         //Print apple color
         prettyPrintApple(inventory, new AppleColorPrinter());
         //Print apple wight
@@ -50,11 +53,11 @@ public class BehaviourParameterisation {
     public static void prettyPrintOnlyWeightApple(List<Apple> inventory) {
         Objects.requireNonNull(inventory, "Inventory must not be null");
         for (Apple apple : inventory) {
-            System.out.out.println("An apple of " + apple.getWeight() + " grams.");
+            System.out.println("An apple of " + apple.getWeight() + " grams.");
         }
     }
 
-    public static void prettyPrintApple(List<Apple> inventory, ApplePrinter printer) {
+    public static void prettyPrintApple(List<Apple> inventory, Printer<Apple> printer) {
         for (Apple apple : inventory) {
             printer.print(apple);
         }
@@ -63,17 +66,17 @@ public class BehaviourParameterisation {
 }
 
 @FunctionalInterface
-interface ApplePrinter {
-    public void print (Apple apple);
+interface Printer<Apple> {
+    void print (Apple apple);
 }
 
-class AppleColorPrinter implements ApplePrinter {
+class AppleColorPrinter implements Printer<Apple> {
     public void print (Apple apple) {
         System.out.println("A " + apple.getColor() + " apple.");
     }
 }
 
-class AppleWeightPrinter implements ApplePrinter {
+class AppleWeightPrinter implements Printer<Apple> {
     public void print (Apple apple) {
         System.out.println("Aa apple of " + apple.getWeight() + " grams.");
     }
