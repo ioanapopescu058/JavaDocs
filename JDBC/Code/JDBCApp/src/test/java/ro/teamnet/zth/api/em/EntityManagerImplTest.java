@@ -25,15 +25,18 @@ public class EntityManagerImplTest {
     public void testGetNextIdVal() throws SQLException{
         EntityManagerImpl em = new EntityManagerImpl();
         Long value = em.getNextIdVal("Departments", "department_id");
-        assertEquals(new Long(271), value);
+        assertEquals(new Long(274), value);
     }
 
     @Test
     public void testInsert() throws SQLException, IllegalAccessException, InstantiationException, NoSuchFieldException {
         EntityManagerImpl em = new EntityManagerImpl();
         Department dept = new Department();
-        Object value = em.insert(Department.class);
-        assertEquals("", "");
+        dept.setDepartmentName("FR");
+        dept.setLocation(1700l);
+        Department value = (Department) em.insert(dept);
+        assertEquals(dept.getDepartmentName(), "FR");
+        //assertEquals((Object)dept.getId(), 273l);
     }
 
     @Test

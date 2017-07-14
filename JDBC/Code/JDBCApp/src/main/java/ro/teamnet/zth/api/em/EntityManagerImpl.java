@@ -85,16 +85,16 @@ public class EntityManagerImpl {
 
         Connection conn = DBManager.getConnection();
 
-        String tableName = EntityUtils.getTableName((Class)entity);
+        String tableName = EntityUtils.getTableName(entity.getClass());
 
         List<ColumnInfo> columns = new ArrayList<>();
-        columns.addAll(EntityUtils.getColumns((Class)entity));
+        columns.addAll(EntityUtils.getColumns(entity.getClass()));
 
         for (ColumnInfo col : columns) {
             if (col.isId())
                 col.setValue(getNextIdVal(tableName, col.getDbColumnName()));
             else {
-                Field f = entity.getClass().getDeclaredField(col.getDbColumnName());
+                Field f = entity.getClass().getDeclaredField(col.getColumnName());
                 f.setAccessible(true);
                 col.setValue(f.get(entity));
             }
@@ -106,7 +106,7 @@ public class EntityManagerImpl {
 
         try (Statement stmt = conn.createStatement()){
             ResultSet rs = stmt.executeQuery(qb.createQuery());
-            return findById((Class)entity, 271l);
+            return findById(entity.getClass(), 271l);
         }
         catch (SQLException e) {
             e.printStackTrace();
