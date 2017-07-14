@@ -3,6 +3,7 @@ package ro.teamnet.zth.api.em;
 import com.sun.deploy.resources.Deployment_pt_BR;
 import org.junit.Test;
 import ro.teamnet.zth.appl.domain.Department;
+import ro.teamnet.zth.appl.domain.Employee;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -82,4 +83,12 @@ public class EntityManagerImplTest {
         assertEquals(66, list.size());
     }
 
+    @Test
+    public void testSearchEmployeesMethod() throws SQLException, IllegalAccessException, InstantiationException, NoSuchFieldException {
+        EntityManagerImpl em = new EntityManagerImpl();
+        List<Employee> employees = em.searchEmployees(Employee.class, Department.class, "str");
+        for (Employee e : employees)
+            System.out.println("Id: " + e.getId() + " First Name: " + e.getFirstName() + " Last Name: " + e.getLastName());
+        assertEquals("", "");
+    }
 }

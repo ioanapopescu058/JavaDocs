@@ -1,6 +1,9 @@
 package ro.teamnet.zth.api.em;
 
+import com.sun.org.apache.xpath.internal.SourceTree;
 import ro.teamnet.zth.api.database.DBManager;
+import ro.teamnet.zth.appl.domain.Department;
+import ro.teamnet.zth.appl.domain.Employee;
 
 import java.lang.reflect.Field;
 import java.sql.Connection;
@@ -275,10 +278,6 @@ public class EntityManagerImpl implements EntityManager{
             cond[i].setValue(entry.getValue());
             i++;
         }
-        /*cond[0].setColumnName("department_name");
-        cond[0].setValue(params.get("department_name"));
-        cond[1].setColumnName("location_id");
-        cond[1].setValue(params.get("location_id"));*/
 
         QueryBuilder qb = new QueryBuilder();
         qb.setQueryType(QueryType.SELECT);
@@ -305,5 +304,54 @@ public class EntityManagerImpl implements EntityManager{
             e.printStackTrace();
         }
         return retList;
+    }
+
+    @Override
+    public List<Employee> searchEmployees(Class<Employee> entityEmpl, Class<Department> entityDept, String dep) throws SQLException, NoSuchFieldException, InstantiationException, IllegalAccessException {
+
+        Connection conn = DBManager.getConnection();
+
+        String tableName1 = EntityUtils.getTableName(entityEmpl);
+        String tableName2 = EntityUtils.getTableName(entityDept);
+
+        List<ColumnInfo> columns1 = new ArrayList<>();
+        columns1.addAll(EntityUtils.getColumns(entityEmpl));
+
+        List<ColumnInfo> columns2 = new ArrayList<>();
+        columns2.addAll(EntityUtils.getColumns(entityDept));
+
+        List employees = new ArrayList<>();
+
+        for (ColumnInfo col1 : columns1) {
+            Field f = entityEmpl.getDeclaredField(col1.getColumnName());
+            f.setAccessible(true);
+            col1.setValue(f.getName());
+        }
+
+        for (ColumnInfo col2 : columns2) {
+            Field f = entityDept.getDeclaredField(col2.getColumnName());
+            f.setAccessible(true);
+            col2.setValue(f.getName());
+        }
+
+        String sql = "select * from " + tableName1 + " join " + tableName2 + " on " +
+                tableName1 + ".department_id = " + tableName2 + ".department_id where " +
+                tableName2 + ".department_name like '%" + dep + "%'";
+
+        try (Statement stmt = conn.createStatement()){
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next()) {
+                Employee inst = entityEmpl.newInstance();
+                inst.setId(rs.getLong(1));
+                inst.setFirstName(rs.getString(2));
+                inst.setLastName(rs.getString(3));
+                employees.add(inst);
+            }
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return employees;
     }
 }

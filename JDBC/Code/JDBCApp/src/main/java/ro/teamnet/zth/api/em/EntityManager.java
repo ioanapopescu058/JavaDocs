@@ -1,5 +1,8 @@
 package ro.teamnet.zth.api.em;
 
+import ro.teamnet.zth.appl.domain.Department;
+import ro.teamnet.zth.appl.domain.Employee;
+
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
@@ -17,6 +20,7 @@ public interface EntityManager {
 	void delete(Object entity) throws SQLException, InstantiationException, IllegalAccessException, NoSuchFieldException;
 	<T> List<T> findByParams(Class<T> entityClass, Map<String, Object> params) throws SQLException, InstantiationException, IllegalAccessException,
             NoSuchFieldException;
-
+    List<Employee> searchEmployees(Class<Employee> entityEmpl, Class<Department> entityDept, String dep) throws SQLException, InstantiationException, IllegalAccessException,
+            NoSuchFieldException;
 
 }
