@@ -1,0 +1,71 @@
+<web-app version="3.1"
+         xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+		                     http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+
+    <display-name>Web Application</display-name>
+
+    <!--Workshop 2 Exercise 1-->
+    <!--HelloWorld Servlet-->
+    <!--TODO Create a definition for HelloWorldServlet class using <servlet> tag -->
+    <!--TIP 1: You should define servlet-name and servlet-class elements -->
+    <!--TIP 2: Ctrl+Click on <servlet> opening tag and go to XSD file to see all the definitions of tag elements -->
+    <servlet>
+        <servlet-name>HelloWorldServlet</servlet-name>
+        <servlet-class>ro.teamnet.zth.web.HelloWorldServlet</servlet-class>
+    </servlet>
+
+    <!--TODO Define a <servlet-mapping> for the servlet defined above -->
+    <!--TIP 1: You should define servlet-name and servlet-pattern elements -->
+    <!--TIP 2: Ctrl+Click on <servlet-mapping> opening tag and go to XSD file to see all the definitions of tag elements -->
+    <servlet-mapping>
+        <servlet-name>HelloWorldServlet</servlet-name>
+        <url-pattern>/hello</url-pattern>
+    </servlet-mapping>
+
+    <!--Welcome file-->
+    <welcome-file-list>
+        <welcome-file>/index.html</welcome-file>
+    </welcome-file-list>
+
+    <!--Workshop 2 Exercise 2-->
+    <!--ImportFileServlet-->
+    <!--TODO Create a definition for ImportFileServlet class using <servlet> tag -->
+    <!--TIP 1: You should define servlet-name and servlet-class elements -->
+    <!--TIP 2: Ctrl+Click on <servlet> opening tag and go to XSD file to see all the definitions of tag elements -->
+    <servlet>
+        <servlet-name>ImportFileServlet</servlet-name>
+        <servlet-class>ro.teamnet.zth.web.ImportFileServlet</servlet-class>
+    </servlet>
+
+    <!--TODO Define a <servlet-mapping> for the servlet defined above -->
+    <!--TIP 1: You should define servlet-name and servlet-pattern elements -->
+    <!--TIP 2: Ctrl+Click on <servlet-mapping> opening tag and go to XSD file to see all the definitions of tag elements -->
+    <servlet-mapping>
+        <servlet-name>ImportFileServlet</servlet-name>
+        <url-pattern>/importfile</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>ZeroToHeroServlet</servlet-name>
+        <servlet-class>ro.teamnet.zth.web.ZeroToHeroServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ZeroToHeroServlet</servlet-name>
+        <url-pattern>/zerotohero</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>InfoHttpServlet</servlet-name>
+        <servlet-class>ro.teamnet.zth.web.InfoHttpServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>InfoHttpServlet</servlet-name>
+        <url-pattern>/info</url-pattern>
+    </servlet-mapping>
+
+</web-app>
