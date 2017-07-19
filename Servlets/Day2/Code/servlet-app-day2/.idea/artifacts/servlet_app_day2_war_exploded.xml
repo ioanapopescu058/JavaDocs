@@ -1,0 +1,41 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="servlet-app-day2:war exploded">
+    <output-path>$PROJECT_DIR$/target/servlet-app-day2</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="servlet-app-day2" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: net.sf.jasperreports:jasperreports:4.7.0" />
+          <element id="library" level="project" name="Maven: commons-beanutils:commons-beanutils:1.8.0" />
+          <element id="library" level="project" name="Maven: commons-collections:commons-collections:2.1" />
+          <element id="library" level="project" name="Maven: commons-digester:commons-digester:2.1" />
+          <element id="library" level="project" name="Maven: com.lowagie:itext:2.1.7" />
+          <element id="library" level="project" name="Maven: bouncycastle:bcmail-jdk14:138" />
+          <element id="library" level="project" name="Maven: bouncycastle:bcprov-jdk14:138" />
+          <element id="library" level="project" name="Maven: org.bouncycastle:bctsp-jdk14:1.38" />
+          <element id="library" level="project" name="Maven: org.bouncycastle:bcprov-jdk14:1.38" />
+          <element id="library" level="project" name="Maven: org.bouncycastle:bcmail-jdk14:1.38" />
+          <element id="library" level="project" name="Maven: jfree:jcommon:1.0.15" />
+          <element id="library" level="project" name="Maven: jfree:jfreechart:1.0.12" />
+          <element id="library" level="project" name="Maven: xml-apis:xml-apis:1.3.02" />
+          <element id="library" level="project" name="Maven: org.codehaus.castor:castor:1.2" />
+          <element id="library" level="project" name="Maven: org.apache.poi:poi-ooxml:3.7" />
+          <element id="library" level="project" name="Maven: org.apache.poi:poi:3.7" />
+          <element id="library" level="project" name="Maven: org.apache.poi:poi-ooxml-schemas:3.7" />
+          <element id="library" level="project" name="Maven: org.apache.xmlbeans:xmlbeans:2.3.0" />
+          <element id="library" level="project" name="Maven: stax:stax-api:1.0.1" />
+          <element id="library" level="project" name="Maven: org.apache.geronimo.specs:geronimo-stax-api_1.0_spec:1.0" />
+          <element id="library" level="project" name="Maven: dom4j:dom4j:1.6.1" />
+          <element id="library" level="project" name="Maven: org.codehaus.jackson:jackson-core-asl:1.9.4" />
+          <element id="library" level="project" name="Maven: org.codehaus.jackson:jackson-mapper-asl:1.9.4" />
+        </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/target/servlet-app-day2/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="javaee-facet-resources" facet="servlet-app-day2/web/Web" />
+    </root>
+  </artifact>
+</component>

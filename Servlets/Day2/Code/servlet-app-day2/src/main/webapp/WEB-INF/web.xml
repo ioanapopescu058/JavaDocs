@@ -1,0 +1,67 @@
+<web-app version="3.1"
+         xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+		                     http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+
+  <display-name>Archetype Created Web Application</display-name>
+
+    <filter>
+        <filter-name>logHeaders</filter-name>
+        <filter-class>ro.teamnet.zth.web.HeadersLogFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>logHeaders</filter-name>
+        <servlet-name>HelloWorld</servlet-name>
+    </filter-mapping>
+
+    <servlet>
+        <servlet-name>HelloWorld</servlet-name>
+        <servlet-class>ro.teamnet.zth.web.HelloWorldServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>HelloWorld</servlet-name>
+        <url-pattern>/hello</url-pattern>
+    </servlet-mapping>
+
+    <welcome-file-list>
+        <welcome-file>/index.jsp</welcome-file>
+    </welcome-file-list>
+
+    <servlet>
+        <servlet-name>HelloWorldServletForward</servlet-name>
+        <servlet-class>ro.teamnet.zth.web.HelloWorldServletForward</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>HelloWorldServletForward</servlet-name>
+        <url-pattern>/helloforward</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>HttpSessionLogin</servlet-name>
+        <servlet-class>ro.teamnet.zth.web.HttpSessionLogin</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>HttpSessionLogin</servlet-name>
+        <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+
+    <!-- Exercise (Workshop 4) -->
+    <!--ExportFileServlet-->
+    <!--TODO Create a definition for ExportFileServlet class using <servlet> tag -->
+    <!--TIP 1: You should define servlet-name and servlet-class elements -->
+    <!--TIP 2: Ctrl+Click on <servlet> opening tag and go to XSD file to see all the definitions of tag elements -->
+    <servlet>
+        <servlet-name>ExportFileServlet</servlet-name>
+        <servlet-class>ro.teamnet.zth.web.ExportFileServlet</servlet-class>
+    </servlet>
+
+    <!--TODO Define a <servlet-mapping> for the servlet defined above -->
+    <!--TIP 1: You should define servlet-name and servlet-pattern elements -->
+    <!--TIP 2: Ctrl+Click on <servlet-mapping> opening tag and go to XSD file to see all the definitions of tag elements -->
+    <servlet-mapping>
+        <servlet-name>ExportFileServlet</servlet-name>
+        <url-pattern>/export</url-pattern>
+    </servlet-mapping>
+
+</web-app>
