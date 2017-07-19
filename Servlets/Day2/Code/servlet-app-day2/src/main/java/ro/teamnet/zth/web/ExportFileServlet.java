@@ -12,8 +12,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Enumeration;
 import java.util.HashMap;
+import java.util.stream.Collectors;
 
 /**
  * TODO Write javadoc
@@ -36,12 +39,14 @@ public class ExportFileServlet extends HttpServlet {
 
         Enumeration<String> paramsName = request.getParameterNames();
 
-        while (paramsName.hasMoreElements()) {
+        /*while (paramsName.hasMoreElements()) {
             String currentName = paramsName.nextElement();
-            String [] values = request.getParameterValues(currentName);
+            String[] values = request.getParameterValues(currentName);
             for (String s : values)
                 paramsMap.put(currentName, s);
-        }
+        }*/
+
+        Collections.list(paramsName).stream().map( s -> paramsMap.put(s, request.getParameter(s))).collect(Collectors.toList());
 
         String passedTemplate = (String) (paramsMap.get("template"));  // the parameter sent from URL (exportFile.jsp)
         String passedFileType = (String) (paramsMap.get("fileType"));  // the parameter sent from URL (exportFile.jsp)
